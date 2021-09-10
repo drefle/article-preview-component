@@ -1,0 +1,17 @@
+{
+  "name": "projet-2-frontend-mentor",
+  "version": "1.0.0",
+  "description": "2 eme projet frontend mentor",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch ./sass/main.scss:./public/css/style.css"
+  },
+  "keywords": [
+    "scss"
+  ],
+  "author": "David Chanteau",
+  "license": "ISC",
+  "dependencies": {
+    "sass": "^1.27.0"
+  }
+}

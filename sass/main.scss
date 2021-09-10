@@ -1,0 +1,307 @@
+$color-white: #fff;
+$color-light-grayish-blue: hsl(210, 46%, 95%);
+$color-grayish-blue:hsl(212, 23%, 69%);
+$color-very-dark-grayish-blue:hsl(217, 19%, 35%);
+$color-desaturated-dark-blue:hsl(214, 17%, 51%);
+$photo-michelle:url("../../images/avatar-michelle.jpg");
+
+
+@font-face{
+    font-family: Manrope-Bold;
+    src:url(Manrope-Bold.ttf);
+}
+@font-face{
+    font-family: Manrope-ExtraBold;
+    src:url(Manrope-ExtraBold.ttf);
+}
+@font-face{
+    font-family: Manrope-Regular;
+    src:url(Manrope-Regular.ttf);
+}
+@font-face{
+    font-family: Manrope-Light;
+    src:url(Manrope-Light.ttf);
+}
+@font-face{
+    font-family: Manrope-Medium;
+    src:url(Manrope-Medium.ttf);
+}
+
+@mixin heading {
+    font-family: Manrope-ExtraBold;
+    color:$color-very-dark-grayish-blue;
+    font-size: 16px;
+    margin: 0;
+}
+
+@mixin text_desktop {
+    font-family: Manrope-Medium;
+    font-size: 10px;
+    color:$color-desaturated-dark-blue;
+}
+@mixin text_mobile {
+    font-family: Manrope-Medium;
+    font-size: 13px;
+    color:$color-desaturated-dark-blue;
+}
+
+@mixin photo-profil($photo: $photo-michelle){
+    height: 30px;
+    width:30px;
+    bottom: 0;
+    background-image: $photo;
+    background-size: cover;
+    border-radius: 50%;
+}
+
+@mixin body {
+    background-color: $color-light-grayish-blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:100vh;
+    margin:0;
+}
+
+@mixin bloc {
+    background-color: $color-white;
+    display: flex;
+    border-radius: 10px;
+    width: 570px;
+    height: 220px;
+
+}
+
+@mixin bloc2{
+    background-color: $color-white;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    width: 90%;
+    margin:10% 0 10% 0;
+    height: 450px;
+    min-width: 250px;
+}
+
+@mixin btn-share{
+    height:25px;
+    width:25px;
+    display: flex;
+    justify-content: center;
+    border-radius: 50%;
+    position: absolute;
+    right:30px;
+    cursor:pointer;
+}
+
+@mixin share($color-share,$color-back){
+    @include btn-share();
+    bottom:30px;
+    background-color:$color-back;
+    .fa-share{
+        color:$color-share;
+        align-self:center;
+    }
+}
+@mixin share2($color-share,$color-back){
+    @include btn-share();
+    bottom:15px;
+    background-color:$color-back;
+    .fa-share{
+        color:$color-share;
+        align-self:center;
+    }
+}
+
+@mixin img{
+    background-image: url("../../images/drawers.jpg");
+    background-size: cover;
+}
+
+@mixin img_desktop{
+    @include img();
+    width: 220px;
+    height: 220px;
+    border-radius: 10px 0 0 10px;
+}
+@mixin img_mobile{
+    @include img();
+    background-position: center;
+    width: 100%;
+    height: 200px;
+    border-radius: 10px 10px 0 0;
+}
+@mixin description_desktop{
+    width: 280px;
+    padding:30px;
+    position: relative;
+}
+@mixin description_mobile{
+    width: 80%;
+    padding: 10% 10% 15px 10%;
+    position: relative;
+ 
+}
+
+
+body{
+    @include body();
+}
+
+.bloc-prim{
+    @include bloc();
+    &__img{
+        @include img_desktop;
+    }
+    &__description{
+        @include description_desktop();
+        &__heading{
+            @include heading();
+        }
+        &__text{
+            @include text_desktop();
+        }
+        &__michelle{
+            display: inline-flex;
+            width: 100%;
+            &__img{
+                @include photo-profil();
+            }
+            &__desc{
+                padding-left: 15px;
+                margin-right: 30px;
+                h1{
+                    font-size: 10px;
+                    font-family: Manrope-ExtraBold;
+                    color:$color-very-dark-grayish-blue;
+                    margin: 0;
+                    font-weight: 700;
+                }
+                p{
+                    font-size: 10px;
+                    font-family:Manrope-Regular;
+                    color:$color-grayish-blue;
+                    margin: 0;
+                }
+            }
+           
+        }
+        &__share--disable{
+            @include share($color-desaturated-dark-blue,$color-light-grayish-blue);
+            
+        }
+        &__share--active{
+            @include share($color-white,$color-desaturated-dark-blue);
+        }
+
+        &__social{
+            background-color: $color-very-dark-grayish-blue;
+            display: none;
+            justify-content: center;
+            height: 40px;
+            width:200px;
+            position: absolute;
+            right:-58px;
+            bottom:80px;
+            border-radius: 7px;
+
+            p{
+                font-family: Manrope-Regular;
+                font-size: 10px;
+                letter-spacing: 4px;
+                color:$color-grayish-blue;
+                align-self: center;
+                margin-right: 7px;
+            }
+            img{
+                align-self: center;
+                border-radius: 2px;
+                height:15px;
+                width: 15px;
+                margin:0 7px 0 7px;
+                z-index: 2;
+            }
+            &__carre{
+                background-color: $color-very-dark-grayish-blue;
+                position: absolute;
+                height: 16px;
+                width: 16px;
+                bottom: -8px;
+                transform: rotate(45deg);
+                z-index: 1;
+            }
+        }
+    }
+    
+}
+
+@media(max-width:375px){
+    .bloc-prim{
+        @include bloc2;
+        &__img{
+            @include img_mobile();
+        }
+        &__description{
+            @include description_mobile();
+            &__heading{
+                @include heading();
+            }
+            &__text{
+                @include text_mobile();
+            }
+            &__michelle{
+                display: inline-flex;
+                width: 100%;
+                margin-top: 20px;
+                
+               
+            }
+            &__share--disable{
+                @include share2($color-desaturated-dark-blue,$color-light-grayish-blue);
+                
+            }
+            &__share--active{
+                @include share2($color-white,$color-desaturated-dark-blue);
+                z-index: 2;
+            }
+    
+            &__social{
+                background-color: $color-very-dark-grayish-blue;
+                display: none;
+                justify-content: flex-start;
+                height: 55px;
+                width: 100%;
+                right:0;
+                position: absolute;
+                bottom:0;
+                border-radius: 0 0 10px 10px;
+                z-index: 1;
+                p{
+                    margin-left: 10%;
+                    font-family: Manrope-Regular;
+                    font-size: 10px;
+                    letter-spacing: 4px;
+                    color:$color-grayish-blue;
+                    align-self: center;
+                    margin-right: 7px;
+                }
+                img{
+                    align-self: center;
+                    border-radius: 2px;
+                    height:15px;
+                    width: 15px;
+                    margin:0 7px 0 7px;
+                    z-index: 2;
+                }
+                &__carre{
+                    display:none;
+                }
+            }
+        }
+    }
+}
+
+.attribution{
+    position: absolute;
+    bottom:0;
+}
